@@ -11,15 +11,13 @@ void	count(int *m, int idx)
 		for (int i = 0; i < n; i++)
 		{
 			m[idx] = i;
-			int good = 1;
-			for (int j = 0; j < idx; j++)
+			int j = 0;
+			for (; j < idx; j++)
 			{
-				if (m[idx] == m[j])
-					good = 0;
-				if (m[idx] - m[j] == idx - j || m[idx] - m[j] == j - idx)
-					good = 0;
+				if (m[idx] == m[j] || m[idx] - m[j] == idx - j || m[idx] - m[j] == j - idx)
+					break ;
 			}
-			if (good)
+			if (j == idx)
 				count(m, idx + 1);
 		}
 	}
